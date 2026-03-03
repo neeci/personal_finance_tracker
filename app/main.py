@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from app.database import Base, engine
-from app.routes import users as newuser
+from app.routes import users as user_route
+from app.routes import accounts as account_route
 from app.models import accounts, categories, transactions, users
 
 
@@ -19,5 +20,6 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
         status_code=422,
         content={"detail": exc.errors()},
     )
-    
-app.include_router(newuser.router)
+
+app.include_router(user_route.router)
+app.include_router(account_route.router)

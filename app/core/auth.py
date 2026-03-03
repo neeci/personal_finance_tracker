@@ -71,7 +71,7 @@ def login(formdata: Annotated[OAuth2PasswordRequestForm, Depends()], db:
    
     if user is None:
         raise HTTPException(status_code=404, detail="Not Found")
-    if verify_password( formdata.password, user.hashed_password):
+    if verify_password(formdata.password, user.hashed_password):
         expire = timedelta(minutes=20)
         token_str = create_access_token(
             {"sub":user.email}, expires = expire)
