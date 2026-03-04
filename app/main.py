@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from app.database import Base, engine
 from app.routes import users as user_route
+from app.routes import categories as category_route
 from app.routes import accounts as account_route
 from app.models import accounts, categories, transactions, users
 
@@ -23,3 +24,4 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
 
 app.include_router(user_route.router)
 app.include_router(account_route.router)
+app.include_router(category_route.router)
