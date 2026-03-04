@@ -22,7 +22,6 @@ class Category(Base):
     user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), index=True)
     transaction_name = Column(PG_ENUM(Trans_Name, name="TransNameEnum", create_type=True), nullable=False)
     trans_type = Column(PG_ENUM(TransactionType, name="TransTypeEnum", create_type=True), nullable=False)
-    committed = Column(Boolean, default=False)
 
     transactions = relationship("Transaction", back_populates="category", cascade="all, delete-orphan")
     user = relationship("User", back_populates="categories")

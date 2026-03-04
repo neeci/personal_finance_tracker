@@ -18,4 +18,3 @@ class CategoryResponse(BaseModel):
     id:int
     transaction_name: str
     trans_type:str
-    committed:bool

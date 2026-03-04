@@ -6,7 +6,7 @@ from app.models.categories import Category
 def create_(db:Session, user_id:int, 
     trans_name: TransNameEnum, trans_type:TransTypeEnum):
     catVariable = Category(user_id=user_id, transaction_name=trans_name,
-    trans_type=trans_type, committed=False)
+    trans_type=trans_type)
     db.add(catVariable)
     db.commit()
     db.refresh(catVariable)
