@@ -15,4 +15,12 @@ def create_(user_id:int, account_id:int, category_id:int, amount:int,
 
 def get_(user_id:int, db:Session):
     return db.query(Transaction).filter(user_id==user_id).all()
+
+def delete_(db:Session, id:int):
+    parameter = db.query(Transaction).filter(Transaction.id==id).first() 
+    db.delete(parameter)
+    db.commit()
+    return {
+        "message" : "Transaction deleted successfully"
+    }
     
