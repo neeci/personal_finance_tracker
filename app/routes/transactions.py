@@ -27,3 +27,4 @@ async def get(db:Session=Depends(get_db),
 async def delete(id:int, db:Session= Depends(get_db), user:
     User = Depends(get_current_active_user)):
     return delete_(db, id)
+
